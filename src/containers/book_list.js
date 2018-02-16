@@ -7,11 +7,11 @@ class BookList extends Component {
     renderList() {
         return this.props.books.map((book) => {
             return (
-                <li key={book.title} className="list-group-item">
+                <li key={book.title} onClick={() => this.props.selectBook(book)} className="list-group-item">
                     {book.title}
                 </li>
-            )
-        })
+            );
+        });
     }
     
     render() {
@@ -35,5 +35,6 @@ function mapDispatchToProps(dispatch) {
     // Sempre que selectBook for chamado, o resultado deverá ser passado para todos os reducers
     return bindActionCreators({selectBook: selectBook}, dispatch);
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
